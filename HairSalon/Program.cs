@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Hairsalon.Models;
+using HairSalon.Models;
 
-namespace Hairsalon
+namespace HairSalon
 {
   class Program
   {
