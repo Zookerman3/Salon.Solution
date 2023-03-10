@@ -7,22 +7,26 @@ using System.Linq;
 
 namespace HairSalon.Controllers
 {
-  public class ClientsController : Controller
-  {
-    private readonly HairSalonContext _db;
-
-    public ClientsController( HairSalonContext db)
+    public class ClientsController : Controller
     {
-      _db = db;
-    }
+        private readonly HairSalonContext _db;
 
-    public ActionResult Index()
-    {
-      List<Client> model = _db.Clients
-                            .Include(item => item.Stylist)
-                            .ToList();
-      return View(model);
-    }
+        public ClientsController(HairSalonContext db)
+        {
+            _db = db;
+        }
 
-  }
+        public ActionResult Index()
+        {
+            List<Client> model = _db.Clients
+                                  .Include(item => item.Stylist)
+                                  .ToList();
+            return View(model);
+        }
+        public ActionResult Create()
+        {
+            ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
+            return View();
+        }
+    }
 }
